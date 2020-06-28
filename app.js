@@ -17,26 +17,24 @@ canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
 
-
-
 let painting = false,
     filling = false;
 
+function saveCurrentCanvas(){
+    if (canvas.toDataURL() != history[history.length-1]){
+        history.push(canvas.toDataURL());
+    }
+}
+
 function stopPainting(){
     painting = false;
-    if (canvas.toDataURL() != history[history.length-1]){
-        console.log(1)
-        history.push(canvas.toDataURL());;
-    }
+    saveCurrentCanvas();
 }
 
 function startPainting(){
     if (filling){
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        if (canvas.toDataURL() != history[history.length-1]){
-            console.log(1)
-            history.push(canvas.toDataURL());;
-        }
+        saveCurrentCanvas();
     } else{
         painting = true;
     }

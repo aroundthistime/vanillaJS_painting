@@ -8,6 +8,8 @@ const canvas =  document.querySelector("#jsCanvas"),
 const INITIAL_COLOR = "#2c2c2c",
     CANVAS_SIZE = 530;
 
+let currentColor = document.querySelector(".jsColor");
+
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;
 
@@ -45,9 +47,17 @@ function onMouseMove(event){
 }
 
 function changeColor(event){
-    const color = event.target.style.backgroundColor;
+    const colorBtn = event.target;
+    const color = colorBtn.style.backgroundColor;
+    currentColor.innerText = "";
+    if (filling){
+        colorBtn.innerText="🧺";
+    } else{
+        colorBtn.innerText='✏️';
+    }
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
+    currentColor = colorBtn;
 }
 
 function handleRangeChange(event){
@@ -59,11 +69,13 @@ function handleModeClick(event){
     if (filling){
         filling = false;
         mode.innerText = "Fill";
-        canvas.style.cursor = "auto";
+        currentColor.innerText='✏️';
+        canvas.style.cursor = 'url("pencil.png") 0 32, auto';
     } else{
         filling = true;
         mode.innerText = "Paint";
-        canvas.style.cursor = "pointer";
+        canvas.style.cursor = 'url("fill.png") 0 32, auto';
+        currentColor.innerText="🧺";
     }
 }
 

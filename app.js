@@ -98,9 +98,17 @@ function handleSave(){
     link.click();
 }
 
+function getLastStatus(){
+    if(history.length === 1){
+        return history[0];
+    } else{
+        return history.pop();
+    }
+}
+
 function handleUndo(){
     if(history.length > 0){
-        const prevStatus = history.pop();
+        const prevStatus = getLastStatus();
         const prevImg = document.createElement("img");
         prevImg.src = prevStatus;
         prevImg.onload= function(){

@@ -229,6 +229,7 @@ function startChallenge(isRetry){
     reset();
     hideChallengeBanner();
     showChallengeQuitBtn();
+    hideRetryBtn();
     const nthChallenge = count++;
     canDraw = true;
     challengeMode.classList.remove("hide");

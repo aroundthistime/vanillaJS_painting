@@ -36,6 +36,7 @@ let currentColorPaint = currentColor.querySelector("span");
 let history = [];
 let showChallengeInfo = false, // 챌린지가 무엇인지 소개하는 팝업을 보여줄지 여부
     canDraw = true,// 챌린지가 진행중이지 않거나 아직 챌린지 시간이 종료되지 않은 상태인지 여부
+    timeLimit = 10000;
     count = 1; //여태까지 몇 번 challenge를 실행했는지 확인함
 
 
@@ -45,120 +46,6 @@ canvas.height = CANVAS_SIZE;
 
 let painting = false,
     filling = false;
-
-function handleBannerBtnClick(event){
-    if (showChallengeInfo){
-        challengeInfo.style.display = "none";
-    } else{
-        challengeInfo.style.display = "block";
-    }
-    showChallengeInfo = !(showChallengeInfo);
-}
-
-function getRandomWord(timeLimit){
-    if (timeLimit >= 20000){
-        if(Math.floor(Math.random()*(wordList[0].length + wordList[1].length)) < wordList[0].length){
-            return wordList[0][Math.floor(Math.random()*(wordList[0].length))];
-        } else{
-            return wordList[1][Math.floor(Math.random()*(wordList[1].length))];
-        }
-    } else{
-        return wordList[0][Math.floor(Math.random()*(wordList[0].length))];
-    }
-}
-
-function hideChallengeBanner(){
-    showChallengeInfo = false;
-    challengeBannerBtn.style.display = "none";
-    challengeInfo.style.display = "none";
-}
-
-function getTimeLimit(isRetry){
-    if (isRetry){
-        return parseInt(challengeRetryTime.value) * 1000;
-    } else{
-        return parseInt(challengeTime.value) * 1000;
-    }
-}
-
-function formatTime(time){
-    return time < 10 ? `0${time}` : time;
-}
-
-function showChallengeQuitBtn(){
-    challengeQuitBtn.style.display = "flex";
-}
-
-function hideChallengeQuitBtn(){
-    challengeQuitBtn.style.display = "none";
-}
-
-function startChallenge(isRetry){
-    hideChallengeBanner();
-    showChallengeQuitBtn();
-    const nthChallenge = count++;
-    canDraw = true;
-    challengeMode.classList.remove("hide");
-    challengeTimeStamp.style.color = "black";
-    let timeLimit = getTimeLimit(isRetry);
-    challengeWord.innerText = getRandomWord(timeLimit);
-    let repeat = setInterval(function(){
-        if (nthChallenge != count-1){
-            return
-        }
-        const seconds = formatTime(parseInt(timeLimit/1000));
-        const miliseconds = formatTime(parseInt((timeLimit%1000)/10));
-        timeLimit -= 10;
-        if (seconds <= 10){
-            challengeTimeStamp.style.color = "red";
-            if (timeLimit <= 0){
-                challengeTimeStamp.innerText = "TIMEOUT 💣";
-                canDraw = false;
-                clearInterval(repeat);
-                setTimeout(function(){
-                    challengeResult.classList.remove("hide")
-                }, 750);
-                return 0;
-            }
-        }
-        challengeTimeStamp.innerText = `00:${seconds}:${miliseconds}`;
-    }, 10);
-}
-
-function clearChallenge(){
-    timeLimit = 0;
-}
-
-function hideRetryBtn(){
-    challengeResult.classList.add("hide")
-}
-
-function retryChallenge(event){
-    event.preventDefault();
-    hideRetryBtn();
-    startChallenge(true);
-}
-
-function quitChallenge(){
-    canDraw = true;
-    challengeBannerBtn.style.display = "flex";
-    challengeMode.classList.add("hide");
-    hideRetryBtn();
-    hideChallengeQuitBtn();
-
-}
-
-function init(){
-    challengeBannerBtn.addEventListener("click", handleBannerBtnClick);
-    challengeCloseBtn.addEventListener("click", handleBannerBtnClick);
-    challengeStartBtn.addEventListener("click", startChallenge);
-    challengeClearBtn.addEventListener("click", clearChallenge);
-    challengePassBtn.addEventListener("click", startChallenge);
-    challengeRetryBtn.addEventListener("click", retryChallenge);
-    challengeQuitBtn.addEventListener("click", quitChallenge);
-}
-
-init();
 
 function saveCurrentCanvas(){
     if (canvas.toDataURL() != history[history.length-1]){
@@ -346,7 +233,7 @@ function startChallenge(isRetry){
     canDraw = true;
     challengeMode.classList.remove("hide");
     challengeTimeStamp.style.color = "black";
-    let timeLimit = getTimeLimit(isRetry);
+    timeLimit = getTimeLimit(isRetry);
     challengeWord.innerText = getRandomWord(timeLimit);
     let repeat = setInterval(function(){
         if (nthChallenge != count-1){
@@ -361,6 +248,11 @@ function startChallenge(isRetry){
                 challengeTimeStamp.innerText = "TIMEOUT 💣";
                 canDraw = false;
                 clearInterval(repeat);
+                const originalColor = ctx.fillStyle;
+                ctx.font = "20px Jua";
+                ctx.fillStyle = "red";
+                ctx.fillText(`${getTimeLimit(isRetry)/1000}초 안에 ${challengeWord.innerText} 그리기`, 10, 30);
+                ctx.fillStyle = originalColor;
                 setTimeout(function(){
                     challengeResult.classList.remove("hide")
                 }, 750);

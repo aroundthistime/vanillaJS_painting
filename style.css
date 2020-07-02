@@ -1,4 +1,11 @@
 @import "reset.css";
+@import url('https://fonts.googleapis.com/css2?family=Jua&family=Pangolin&display=swap');
+@import "challenge.css";
+@import "challenging.css";
+
+*{
+    box-sizing: border-box;
+}
 
 body{
     background-color: #f6f9fc;
@@ -7,6 +14,7 @@ body{
     flex-direction: column;
     align-items: center;
     padding-top : 40px;
+    font-family: 'Jua', sans-serif;
 }
 
 .canvas{
@@ -63,6 +71,16 @@ body{
     justify-content: center;
 }
 
+.controls__color img{
+    width : 20px;
+    height : 20px;
+    display : none;
+}
+
 .controls .controls__range{
     margin-bottom : 10px;
+}
+
+.hide{
+    display : none;
 }

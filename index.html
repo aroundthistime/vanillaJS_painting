@@ -19,17 +19,84 @@
             <button id="jsClear">Clear</button>
         </div>
         <div class="controls__colors" id="jsColors">
-            <div class="controls__color jsColor" style="background-color: #2c2c2c">✏️</div>
-            <div class="controls__color jsColor" style="background-color: white"></div>
-            <div class="controls__color jsColor" style="background-color: #ff3b30"></div>
-            <div class="controls__color jsColor" style="background-color: #ff9500"></div>
-            <div class="controls__color jsColor" style="background-color: #FFCC00"></div>
-            <div class="controls__color jsColor" style="background-color: #4cd963"></div>
-            <div class="controls__color jsColor" style="background-color: #5ac8fa"></div>
-            <div class="controls__color jsColor" style="background-color: #0579ff"></div>
-            <div class="controls__color jsColor" style="background-color: #5856d6"></div>
+            <div class="controls__color jsColor" style="background-color: #2c2c2c">
+                <span class="color__paint">✏️</span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: white">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #ff3b30">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #ff9500">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #FFCC00">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #4cd963">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #5ac8fa">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #0579ff">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
+            <div class="controls__color jsColor" style="background-color: #5856d6">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
         </div>
     </div>
+    <div class="challenge__banner">
+        <div class="challenge__Btn">Challenge</div>
+        <div class="challenge__info">
+            제한된 시간동안 랜덤한 단어를 그려보는 드로잉 챌린지에 참가하세요!<br><br>
+            시간제한은 10초, 20초, 60초 중에서 설정할 수 있습니다.
+            <div class="info__option-bar">
+                <select>
+                    <option value="10">10초(10sec)</option>
+                    <option value="20">30초(30sec)</option>
+                    <option value="60">60초(60sec)</option>
+                </select>
+                <button class="challenge__start">Start</button>
+                <button class="challenge__close">Close</button>
+            </div>
+        </div>
+    </div>
+    <div class="challenge--ing hide">
+        <div class="challenge__status">
+            <div class="challenge__word">
+                <span>제시어 : </span>
+                <span class="keyword">김치볶음밥</span>
+            </div>
+            <div class="timestamp">00:30:00</div>
+        </div>
+        <div class="btns">
+            <button class="challenge__clear">Clear</button>
+            <button class="challenge__pass" id="btn-pass">Pass</button>
+        </div>
+        <form class="challenge__result hide">
+            <span>한번 더?</span>
+            <select>
+                <option value="10">10초(10sec)</option>
+                <option value="20">30초(30sec)</option>
+                <option value="60">60초(60sec)</option>
+            </select>
+            <button class="challenge__retry">Retry</button>
+        </form>
+    </div>
+    <div class="challenge__quit challenge__quit--big">Quit Challenge</div>
+    <!-- <script src="challenge.js"></script> app.js에 합침 --> 
     <script src="app.js"></script>
 </body>
 </html>

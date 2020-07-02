@@ -1,0 +1,83 @@
+.challenge--ing{
+    position : absolute;
+    top : 25px;
+    right : 20px;
+}
+
+.challenge--ing .challenge__status{
+    cursor: pointer;
+    width : 300px;
+    background-color : #F1F1F1;
+    border : 4px solid #b3adadd3;
+    border-radius: 20px;
+    padding : 5px 15px;
+}
+
+.challenge--ing .challenge__word{
+    width : 270px;
+    height : 60px;
+    font-size : 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.challenge--ing .timestamp{
+    font-size : 26px;
+    padding-left : 90px
+
+}
+
+.challenge--ing .btns{
+    margin : 10px;
+    width : 100%;
+    display : flex;
+    padding : 0px 48px;
+    padding-right : 60px;
+    justify-content: space-between;
+}
+
+.challenge--ing .btns button{
+    width : 70px;
+    height : 30px;
+    border-radius: 6px;
+    box-shadow : #a7a4a4 0px 1px 0px 0px inset;
+    color : #fcfcfc;
+    cursor: pointer;
+}
+
+
+.challenge--ing .challenge__clear{
+    background-color: #4AAB4E;
+}
+
+#btn-pass{
+    background-color: #fcfcfc;
+    color : #525252;
+}
+
+.challenge__result{
+    padding-left : 60px;
+}
+
+.challenge__result select{
+    margin-left : 20px;
+    -webkit-appearance: none;  
+    -moz-appearance: none;
+    appearance: none;
+    width : 85px;
+    height : 20px;
+    padding-left : 5px;
+    outline : none;
+    font-family: 'Jua', sans-serif;
+    border-radius : 3px;
+}
+
+.challenge__result button{
+    width : 70px;
+    height : 25px;
+    border-radius: 6px;
+    color : #fcfcfc;
+    cursor: pointer;
+    background-color: #5F80DF;
+}

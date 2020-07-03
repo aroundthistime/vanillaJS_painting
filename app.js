@@ -86,9 +86,9 @@ function onMouseMove(event){
     let x = event.offsetX;
     let y = event.offsetY;
     if(isMobile){
-        const touches = event.changedTouches;
-        x = touches[0].screenX;
-        y = touches[0].screenY
+        const touch = event.originalEvent.touches[0];
+        x = touch.pageX;
+        y = touch.pageY;
     }
     if (canDraw){
         console.log(1);
@@ -110,8 +110,6 @@ function onMouseMove(event){
 }
 
 function changeColor(event){
-    event.preventDefault();
-    event.stopPropagation();
     let colorBtn = event.target;
     const color = colorBtn.style.backgroundColor;
     if(colorBtn.tagName == "IMG" || colorBtn.tagName == "SPAN"){

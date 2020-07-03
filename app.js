@@ -78,6 +78,14 @@ function startPainting(event){
             painting = true;
         }
     }
+    if (isMobile){
+        console.log("10:23");
+        const touches = event.changedTouches;
+        x = touches[0].screenX;
+        y = touches[0].screenY;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+    }
 }
 
 function onMouseMove(event){

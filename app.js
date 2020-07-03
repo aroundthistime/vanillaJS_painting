@@ -328,11 +328,13 @@ function init(){
     reset();
 
     if (canvas){
-        canvas.addEventListener("mousemove", onMouseMove);
-        canvas.addEventListener("mousedown",startPainting);
-        canvas.addEventListener("mouseup", stopPainting);
-        canvas.addEventListener("mouseleave",stopPainting);
-        canvas.addEventListener("contextmenu", handleCM);
+        if(!(isMobile)){
+            canvas.addEventListener("mousemove", onMouseMove);
+            canvas.addEventListener("mousedown",startPainting);
+            canvas.addEventListener("mouseup", stopPainting);
+            canvas.addEventListener("mouseleave",stopPainting);
+            canvas.addEventListener("contextmenu", handleCM);
+        }
         canvas.addEventListener("touchmove", onMouseMove, false); //여기서부터 mobile 전용
         canvas.addEventListener("touchstart", startPainting, false);
         canvas.addEventListener("touchend", stopPainting, false);

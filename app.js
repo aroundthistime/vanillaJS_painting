@@ -32,7 +32,11 @@ const INITIAL_COLOR = "#2c2c2c",
     CANVAS_SIZE = 530;
 
 if( ( window.innerWidth <= 800 ) && ( window.innerHeight <= 600 ) ){
-    CANVAS_SIZE = 480;
+    canvas.width = document.documentElement.clientWidth * 0.95;
+    canvas.height = document.documentElement.clientHeight * 0.5;
+} else{
+    canvas.width = CANVAS_SIZE;
+    canvas.height = CANVAS_SIZE;
 }
 
 let currentColor = document.querySelector(".jsColor");
@@ -45,8 +49,7 @@ let showChallengeInfo = false, // 챌린지가 무엇인지 소개하는 팝업�
     count = 1; //여태까지 몇 번 challenge를 실행했는지 확인함
 
 
-canvas.width = CANVAS_SIZE;
-canvas.height = CANVAS_SIZE;
+
 
 
 let painting = false,
@@ -160,7 +163,7 @@ function handleUndo(){
         const prevImg = document.createElement("img");
         prevImg.src = prevStatus;
         prevImg.onload= function(){
-            ctx.drawImage(prevImg,0, 0, CANVAS_SIZE, CANVAS_SIZE,0, 0, CANVAS_SIZE, CANVAS_SIZE);
+            ctx.drawImage(prevImg,0, 0, canvas.width, canvas.height,0, 0, canvas.width, canvas.innerHeight);
         }
     }
     // while(history.length)

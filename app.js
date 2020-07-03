@@ -105,8 +105,6 @@ function onMouseMove(event){
 }
 
 function changeColor(event){
-    event.preventDefault();
-    event.stopPropagation();
     let colorBtn = event.target;
     const color = colorBtn.style.backgroundColor;
     if(colorBtn.tagName == "IMG" || colorBtn.tagName == "SPAN"){

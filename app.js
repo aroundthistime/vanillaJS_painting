@@ -94,11 +94,6 @@ function onMouseMove(event){
         console.log(1);
         let x = event.offsetX;
         let y = event.offsetY;
-        if(isMobile){
-            const touches = event.changedTouches;
-            x = touches[0].pageX;
-            y = touches[0].pageY;  
-        }
         if(!painting){
             ctx.beginPath();
             ctx.moveTo(x, y);

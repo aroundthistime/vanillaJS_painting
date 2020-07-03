@@ -30,9 +30,11 @@ const challengeBanner = document.querySelector(".challenge__banner"),
 
 const INITIAL_COLOR = "#2c2c2c";
 let CANVAS_SIZE = 530;
+let isMobile = false;
 
-if( ( window.innerWidth <= 800 ) && ( window.innerHeight <= 600 ) ){
-    CANVAS_SIZE = document.documentElement.clientWidth * 0.95;
+if( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 900 ) ){
+    CANVAS_SIZE = window.innerWidth * 0.95;
+    isMobile = true;
 }
 
 canvas.width = CANVAS_SIZE;
@@ -65,7 +67,10 @@ function stopPainting(){
     saveCurrentCanvas();
 }
 
-function startPainting(){
+function startPainting(event){
+    console.log(12345);
+    event.preventDefault();
+    event.stopPropagation();
     if (canDraw){
         if (filling){
             ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -77,9 +82,17 @@ function startPainting(){
 }
 
 function onMouseMove(event){
+    event.preventDefault();
+    event.stopPropagation();
     if (canDraw){
-        const x = event.offsetX;
-        const y = event.offsetY;
+        console.log(1);
+        let x = event.offsetX;
+        let y = event.offsetY;
+        if(isMobile){
+            const touches = event.changedTouches;
+            x = touches[0].screenX;
+            y = touches[0].screenY;  
+        }
         if(!painting){
             ctx.beginPath();
             ctx.moveTo(x, y);
@@ -91,6 +104,8 @@ function onMouseMove(event){
 }
 
 function changeColor(event){
+    event.preventDefault();
+    event.stopPropagation();
     let colorBtn = event.target;
     const color = colorBtn.style.backgroundColor;
     if(colorBtn.tagName == "IMG" || colorBtn.tagName == "SPAN"){
@@ -292,6 +307,7 @@ function retryChallenge(event){
 
 function quitChallenge(){
     canDraw = true;
+    count += 1;
     challengeBannerBtn.style.display = "flex";
     challengeMode.classList.add("hide");
     hideRetryBtn();
@@ -311,9 +327,9 @@ function init(){
         canvas.addEventListener("mouseup", stopPainting);
         canvas.addEventListener("mouseleave",stopPainting);
         canvas.addEventListener("contextmenu", handleCM);
-        canvas.addEventListener("touchmove", onMouseMove); //여기서부터 mobile 전용
-        canvas.addEventListener("touchstart", startPainting);
-        canvas.addEventListener("touchend", stopPainting);
+        canvas.addEventListener("touchmove", onMouseMove, false); //여기서부터 mobile 전용
+        canvas.addEventListener("touchstart", startPainting, false);
+        canvas.addEventListener("touchend", stopPainting, false);
     }
 
     colors.forEach(function(color){

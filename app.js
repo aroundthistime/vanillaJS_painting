@@ -86,9 +86,9 @@ function onMouseMove(event){
     let x = event.offsetX;
     let y = event.offsetY;
     if(isMobile){
-        const touches = event.changedTouches;
-        x = touches[0].screenX;
-        y = touches[0].screenY
+        const touch = event.originalEvent.touches[0];
+        x = touch.pageX;
+        y = touch.pageY;
     }
     if (canDraw){
         console.log(1);

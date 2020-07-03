@@ -33,7 +33,7 @@ let CANVAS_SIZE = 530;
 
 if( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 900 ) ){
     CANVAS_SIZE = window.innerWidth * 0.95;
-    ismobile = true;
+    isMobile = true;
 }
 
 canvas.width = CANVAS_SIZE;
@@ -88,8 +88,8 @@ function onMouseMove(event){
     let y = event.offsetY;
     if(isMobile){
         const touches = event.changedTouches;
-        x = touch[0].screenX;
-        y = touch[0].screenY
+        x = touches[0].screenX;
+        y = touches[0].screenY
     }
     if (canDraw){
         if(!painting){

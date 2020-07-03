@@ -79,10 +79,11 @@ function startPainting(event){
         }
     }
     if (isMobile){
-        console.log("10:31");
+        console.log("10:40");
         const touches = event.changedTouches;
-        x = touches[0].clientX;
-        y = touches[0].clientY;
+        let elementRect = event.target.getBoundingClientRect();
+        x = touches[0].clientX - elementRect.left;
+        y = touches[0].clientY - elementRect.top;
         ctx.beginPath();
         ctx.moveTo(x, y);
     }
@@ -97,8 +98,9 @@ function onMouseMove(event){
         let y = event.offsetY;
         if(isMobile){
             const touches = event.changedTouches;
-            x = touches[0].clientX;
-            y = touches[0].clientY
+            let elementRect = event.target.getBoundingClientRect();
+            x = touches[0].clientX - elementRect.left;
+            y = touches[0].clientY - elementRect.top;
         }
         if(!painting){
             ctx.beginPath();

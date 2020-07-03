@@ -8,14 +8,6 @@
         background-color: lightsalmon;
     }
 
-    .logo{
-        display : block;
-        position : absolute;
-        top : 30px;
-        left : 20px;
-        z-index: -1;
-    }
-
     .challenge__banner .challenge__Btn,
     .challenge__banner .challenge__info{
         background-color : #F1F1F1;
@@ -33,22 +25,30 @@
         bottom : 5px;
     }
 
+    .info__option-bar button{
+        width : 60px;
+        height : 23px;
+    }
+
     .challenge__info select{
         width : 80px;
         height : 20px;
     }
 
-    .info__option-bar button{
-        width : 60px;
-        height : 23px;
-    }
 
     .challenge--ing{
         top : 7px;
         left : 55px;
         align-self: center;
     }
-    
+
+    .logo{
+        display : block;
+        position : absolute;
+        top : 30px;
+        left : 20px;
+        z-index : -1;
+    }
 
     .challenge--ing .challenge__status{
         width : 250px;
@@ -65,6 +65,7 @@
         padding-right : 5px;
     }
 
+
     .challenge--ing .timestamp{
         font-size : 19px;
         padding-left : 70px;
@@ -74,6 +75,7 @@
         margin : 5px;
         padding-right : 20px;
     }
+
     .challenge--ing .btns button{
         width : 60px;
         height : 25px;
@@ -104,15 +106,9 @@
         flex-flow : wrap;
     }
 
-    /* .controls__colors .controls__color{
-        width : 45px;
-        height : 45px;
-    } */
-
     button#challenge__quit-mobile{
         display : block;
         background-color: #F75C53;
     }
-
 
 }

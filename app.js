@@ -226,6 +226,9 @@ function hideChallengeQuitBtn(){
 }
 
 function startChallenge(isRetry){
+    if (isRetry !== true){
+        isRetry = false;
+    }
     reset();
     hideChallengeBanner();
     showChallengeQuitBtn();

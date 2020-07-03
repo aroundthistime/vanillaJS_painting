@@ -91,17 +91,15 @@ function startPainting(event){
 function onMouseMove(event){
     event.preventDefault();
     event.stopPropagation();
-    let x = event.offsetX;
-    let y = event.offsetY;
-    if(isMobile){
-        const touches = event.changedTouches;
-        x = touches[0].screenX;
-        y = touches[0].screenY
-    }
     if (canDraw){
         console.log(1);
         let x = event.offsetX;
         let y = event.offsetY;
+        if(isMobile){
+            const touches = event.changedTouches;
+            x = touches[0].screenX;
+            y = touches[0].screenY
+        }
         if(!painting){
             ctx.beginPath();
             ctx.moveTo(x, y);

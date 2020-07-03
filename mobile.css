@@ -1,7 +1,7 @@
 @media screen and (max-width: 480px) {
     .canvas{
         width : 95vw;
-        height : 50vh;
+        height : 95vw;
     }
     body{
         padding-top : 180px;

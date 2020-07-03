@@ -28,16 +28,15 @@ const challengeBanner = document.querySelector(".challenge__banner"),
     challengeQuitMobileBtn = document.querySelector(".challenge__quit-mobile");
 
 
-const INITIAL_COLOR = "#2c2c2c",
-    CANVAS_SIZE = 530;
+const INITIAL_COLOR = "#2c2c2c";
+let CANVAS_SIZE = 530;
 
 if( ( window.innerWidth <= 800 ) && ( window.innerHeight <= 600 ) ){
-    canvas.width = document.documentElement.clientWidth * 0.95;
-    canvas.height = document.documentElement.clientHeight * 0.5;
-} else{
-    canvas.width = CANVAS_SIZE;
-    canvas.height = CANVAS_SIZE;
+    CANVAS_SIZE = document.documentElement.clientWidth * 0.95;
 }
+
+canvas.width = CANVAS_SIZE;
+canvas.height = CANVAS_SIZE;
 
 let currentColor = document.querySelector(".jsColor");
 let currentColorFill = currentColor.querySelector("img");

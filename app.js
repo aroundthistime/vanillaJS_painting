@@ -188,7 +188,7 @@ function handleUndo(){
         const prevImg = document.createElement("img");
         prevImg.src = prevStatus;
         prevImg.onload= function(){
-            ctx.drawImage(prevImg,0, 0, canvas.width, canvas.height,0, 0, canvas.width, canvas.innerHeight);
+            ctx.drawImage(prevImg,0, 0, canvas.width, canvas.height);
         }
     }
     // while(history.length)

@@ -30,11 +30,13 @@ const challengeBanner = document.querySelector(".challenge__banner"),
 
 const INITIAL_COLOR = "#2c2c2c";
 let CANVAS_SIZE = 530;
+let isMobile = false;
 
 if( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 900 ) ){
     CANVAS_SIZE = window.innerWidth * 0.95;
     isMobile = true;
 }
+
 
 canvas.width = CANVAS_SIZE;
 canvas.height = CANVAS_SIZE;

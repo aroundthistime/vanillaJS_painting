@@ -56,6 +56,10 @@
     color : #525252;
 }
 
+button#challenge__quit-mobile{
+    display : none;
+}
+
 .challenge__result{
     padding-left : 60px;
 }

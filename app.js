@@ -24,11 +24,16 @@ const challengeBanner = document.querySelector(".challenge__banner"),
     challengeResult = challengeMode.querySelector(".challenge__result"),
     challengeRetryTime = challengeResult.querySelector("select"),
     challengeRetryBtn = challengeResult.querySelector("button"),
-    challengeQuitBtn = document.querySelector(".challenge__quit--big");
+    challengeQuitBtn = document.querySelector(".challenge__quit--big"),
+    challengeQuitMobileBtn = document.querySelector(".challenge__quit-mobile");
 
 
 const INITIAL_COLOR = "#2c2c2c",
     CANVAS_SIZE = 530;
+
+if( ( window.innerWidth <= 800 ) && ( window.innerHeight <= 600 ) ){
+    CANVAS_SIZE = 480;
+}
 
 let currentColor = document.querySelector(".jsColor");
 let currentColorFill = currentColor.querySelector("img");
@@ -218,7 +223,9 @@ function formatTime(time){
 }
 
 function showChallengeQuitBtn(){
-    challengeQuitBtn.style.display = "flex";
+    if (( window.innerWidth > 800 ) && ( window.innerHeight > 600 )){
+        challengeQuitBtn.style.display = "flex";
+    }
 }
 
 function hideChallengeQuitBtn(){
@@ -293,7 +300,7 @@ function quitChallenge(){
 function init(){
     ctx.strokeStyle = INITIAL_COLOR;
     ctx.fillStyle =  INITIAL_COLOR;
-    ctx.lineWidth = "6.0";
+    ctx.lineWidth = "8.5";
     reset();
 
     if (canvas){
@@ -302,6 +309,9 @@ function init(){
         canvas.addEventListener("mouseup", stopPainting);
         canvas.addEventListener("mouseleave",stopPainting);
         canvas.addEventListener("contextmenu", handleCM);
+        canvas.addEventListener("touchmove", onMouseMove); //여기서부터 mobile 전용
+        canvas.addEventListener("touchstart", startPainting);
+        canvas.addEventListener("touchend", stopPainting);
     }
 
     colors.forEach(function(color){
@@ -334,6 +344,7 @@ function init(){
     challengePassBtn.addEventListener("click", startChallenge);
     challengeRetryBtn.addEventListener("click", retryChallenge);
     challengeQuitBtn.addEventListener("click", quitChallenge);
+    challengeQuitMobileBtn.addEventListener("click", quitChallenge);
 }
 
 init();

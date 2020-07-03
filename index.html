@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JS Paint</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" media="screen and (min-device-width: 320px) and (max-device-width: 500px)" href="mobile.css" />
 </head>
 <body>
     <canvas class="canvas" id="jsCanvas"></canvas>
+    <img src="logo-removebg-preview.png" class="logo">
     <div class="controls">
         <div class="controls__range">
-            <input type="range" id="jsRange" min="0.1" max="12.0" value="6.0" step="0.1">
+            <img src="sharp.png" class="thickness">
+            <input type="range" id="jsRange" min="2.0" max="15.0" value="8.5" step="0.1">
+            <img src="thick.png" class="thickness">
         </div>
         <div class="controls__btns">
             <button id="jsMode">Fill</button>
@@ -55,6 +59,10 @@
                 <span class="color__paint"></span>
                 <img src="fill_image_resized.png">
             </div>
+            <div class="controls__color jsColor" style="background-color: rgb(158, 157, 157)">
+                <span class="color__paint"></span>
+                <img src="fill_image_resized.png">
+            </div>
         </div>
     </div>
     <div class="challenge__banner">
@@ -84,6 +92,7 @@
         <div class="btns">
             <button class="challenge__clear">Clear</button>
             <button class="challenge__pass" id="btn-pass">Pass</button>
+            <button class="challenge__quit-mobile" id="challenge__quit-mobile">Quit</button>
         </div>
         <form class="challenge__result hide">
             <span>한번 더?</span>
@@ -95,7 +104,7 @@
             <button class="challenge__retry">Retry</button>
         </form>
     </div>
-    <div class="challenge__quit challenge__quit--big">Quit Challenge</div>
+    <div class="challenge__quit challenge__quit--big" id="challenge__quit-computer">Quit Challenge</div>
     <!-- <script src="challenge.js"></script> app.js에 합침 --> 
     <script src="app.js"></script>
 </body>

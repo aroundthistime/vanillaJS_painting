@@ -1,0 +1,57 @@
+@media screen and (max-width: 480px) {
+    .canvas{
+        width : 95vw;
+        height : 50vh;
+    }
+    body{
+        padding-top : 180px;
+        background-color: lightsalmon;
+    }
+
+    .challenge__banner .challenge__info{
+        top : 50px;
+    }
+
+    .challenge--ing{
+        top : 20px;
+        right : 10px;
+        align-self: center;
+    }
+
+    .logo{
+        display : block;
+        position : absolute;
+        top : 30px;
+        left : 20px;
+    }
+
+    .challenge--ing .challenge__word{
+        height : 50px;
+    }
+    .challenge--ing .btns{
+        margin : 5px;
+        padding-right : 20px;
+    }
+
+    .challenge--ing .challenge__result{
+        padding-left : 55px;
+    }
+
+    .challenge__result select{
+        margin-left : 10px;
+    }
+
+    .controls__colors{
+        width : 260px;
+        height : 110px;
+        display : flex;
+        justify-content: space-between;
+        flex-flow : wrap;
+    }
+
+    button#challenge__quit-mobile{
+        display : block;
+        background-color: #F75C53;
+    }
+
+}

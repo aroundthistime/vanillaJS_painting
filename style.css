@@ -81,6 +81,15 @@ body{
     margin-bottom : 10px;
 }
 
+.controls__range .thickness{
+    width : 20px;
+    height : 20px;
+}
+
 .hide{
+    display : none;
+}
+
+.logo{
     display : none;
 }

@@ -30,11 +30,10 @@ const challengeBanner = document.querySelector(".challenge__banner"),
 
 const INITIAL_COLOR = "#2c2c2c";
 let CANVAS_SIZE = 530;
-let isMobile = false;
 
 if( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 900 ) ){
     CANVAS_SIZE = window.innerWidth * 0.95;
-    isMobile = true;
+    ismobile = true;
 }
 
 canvas.width = CANVAS_SIZE;
@@ -85,15 +84,14 @@ function startPainting(event){
 function onMouseMove(event){
     event.preventDefault();
     event.stopPropagation();
+    let x = event.offsetX;
+    let y = event.offsetY;
+    if(isMobile){
+        const touches = event.changedTouches;
+        x = touch[0].screenX;
+        y = touch[0].screenY
+    }
     if (canDraw){
-        console.log(1);
-        let x = event.offsetX;
-        let y = event.offsetY;
-        if(isMobile){
-            const touches = event.changedTouches;
-            x = touches[0].screenX;
-            y = touches[0].screenY;  
-        }
         if(!painting){
             ctx.beginPath();
             ctx.moveTo(x, y);

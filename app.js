@@ -33,7 +33,7 @@ let CANVAS_SIZE = 530;
 
 if( ( window.innerWidth <= 600 ) && ( window.innerHeight <= 900 ) ){
     CANVAS_SIZE = window.innerWidth * 0.95;
-    ismobile = true;
+    isMobile = true;
 }
 
 canvas.width = CANVAS_SIZE;
@@ -62,13 +62,12 @@ function saveCurrentCanvas(){
 }
 
 function stopPainting(){
-    event.preventDefault();
-    event.stopPropagation();
     painting = false;
     saveCurrentCanvas();
 }
 
 function startPainting(event){
+    console.log(12345);
     event.preventDefault();
     event.stopPropagation();
     if (canDraw){
@@ -88,10 +87,18 @@ function onMouseMove(event){
     let y = event.offsetY;
     if(isMobile){
         const touches = event.changedTouches;
-        x = touch[0].screenX;
-        y = touch[0].screenY
+        x = touches[0].screenX;
+        y = touches[0].screenY
     }
     if (canDraw){
+        console.log(1);
+        let x = event.offsetX;
+        let y = event.offsetY;
+        if(isMobile){
+            const touches = event.changedTouches;
+            x = touches[0].screenX;
+            y = touches[0].screenY;  
+        }
         if(!painting){
             ctx.beginPath();
             ctx.moveTo(x, y);

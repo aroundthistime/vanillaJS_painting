@@ -79,10 +79,10 @@ function startPainting(event){
         }
     }
     if (isMobile){
-        console.log("10:23");
+        console.log("10:31");
         const touches = event.changedTouches;
-        x = touches[0].screenX;
-        y = touches[0].screenY;
+        x = touches[0].clientX;
+        y = touches[0].clientY;
         ctx.beginPath();
         ctx.moveTo(x, y);
     }
@@ -97,8 +97,8 @@ function onMouseMove(event){
         let y = event.offsetY;
         if(isMobile){
             const touches = event.changedTouches;
-            x = touches[0].screenX;
-            y = touches[0].screenY
+            x = touches[0].clientX;
+            y = touches[0].clientY
         }
         if(!painting){
             ctx.beginPath();
